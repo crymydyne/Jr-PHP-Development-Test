@@ -1,0 +1,20 @@
+A: 
+SELECT first_name, last_name
+FROM persons;
+
+This query will select the first and last name of every ID in the table.
+
+
+B:
+DELETE FROM persons
+WHERE DATE_ADD(date_of_birth, INTERVAL 18 YEAR) > CURDATE();
+
+This query will remove all registers from the table where the age of the person is less than 18 years old, according to the current date.
+
+C: 
+SELECT p.first_name AS parent_first_name, p.last_name AS parent_last_name,
+       c.first_name AS child_first_name, c.last_name AS child_last_name
+FROM persons AS p
+INNER JOIN children AS c ON p.person_id = c.parent_id;
+
+In this example, we assume that each kid has the common identifies parent_id to link the children table to the persons table. Using this, we can use inner join to combine the columns parent_id and person_id, as well as selecting the names from each table.
